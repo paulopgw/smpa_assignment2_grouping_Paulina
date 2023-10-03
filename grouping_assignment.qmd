@@ -61,11 +61,11 @@ Take a moment to look at the various categories included for each disbursement.
 
 Without doing any analysis yet, what are three questions you might try to answer using this dataset? Write your narrative answers in the spaces below.
 
-1.  
+1.  What year did the biggest payment happen?
 
-2.  
+2.  How much in total was paid in 2018?
 
-3.  
+3.  What month of 2018 had the biggest amount of payments?
 
 ## Coding Assignment Questions
 
@@ -81,11 +81,9 @@ How much was spent in the 2017 vs. 2018 reporting year?
 
 ```{r}
 
-
-
-
-
-
+payments %>%
+  group_by(disbursement_year)%>%
+  summarise(disbursement_amount)
 
 ```
 
@@ -93,9 +91,10 @@ Tally the total overall disbursement amounts for each month (distinguishing betw
 
 ```{r}
 
-
-
-
+payments%>%
+  group_by(disbursement_amount)%>%
+  summarise(disbursement_description)
+#sdfsdfdsfsdf
 
 
 ```
@@ -104,11 +103,9 @@ Which recipient (recipient_name) was paid the most in the 2020 election cycle?
 
 ```{r}
 
-
-
-
-
-
+payments %>%
+  group_by(recipient_name)%>%
+  summarize(max(disbursement_amount))
 
 ```
 
@@ -116,21 +113,22 @@ Look at what this recipient was paid for. What service or good (see the "disburs
 
 ```{r}
 
+payments %>%
+  filter(disbursement_amount == 3390990.85)%>%
+  summarise(disbursement_description)
 
-
-
-
-
+I had figured out that that was the highest amount, therefore I filtered it and then summarized it.
+  
 ```
 
 What's the most common category overall (see "disbursement_description") the campaign spent money on?
 
 ```{r}
 
+payments%>%
+  group_by(mode(disbursement_description)
 
-
-
-
+I tried to group it by the most common disbursement description.
 
 ```
 
