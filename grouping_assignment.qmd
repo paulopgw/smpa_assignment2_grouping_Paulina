@@ -136,11 +136,12 @@ Who were the 5 biggest recipients of campaign spending on "LEGAL CONSULTING"..?
 
 ```{r}
 
+payments %>%
+  filter(disbursement_description == "LEGAL CONSULTING")%>%
+  group_by()%>%
+  summarise(recipient_name)
 
-
-
-
-
+I filtered to only have legal consulting information, then put them from highest to lowest, and then with summarize have them only show the recipient name.
 
 ```
 
@@ -150,9 +151,10 @@ Who are the top 5 individuals (vs. organization) were paid by the campaign commi
 ```{r}
 
 
-
-
-
+payments %>%
+  filter(disbursement_amount)
+  group_by()%>%
+  summarise(recipient_name)
 
 
 ```
@@ -163,9 +165,8 @@ For the indvidual who was paid the most, which payment category (disbursement_de
 ```{r}
 
 
-
-
-
+payments %>%
+  filter(disbursement_amount == 3390990.85)
 
 
 ```
